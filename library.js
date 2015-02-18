@@ -32,7 +32,7 @@ Pushbullet.init = function(data, callback) {
 	// Admin setup routes
 	data.router.get('/admin/plugins/pushbullet', data.middleware.admin.buildHeader, pluginControllers.renderACP);
 	data.router.get('/api/admin/plugins/pushbullet', pluginControllers.renderACP);
-
+e
 	// Pushbullet-facing routes
 	data.router.get('/pushbullet/setup', pluginMiddleware.hasConfig, Pushbullet.redirectSetup);
 	data.router.get('/api/pushbullet/setup', function(req, res) {
@@ -151,7 +151,7 @@ Pushbullet.push = function(data) {
 				if (!results.tokens[uid] || !results.settings[index]) {
 					return;
 				}
-				if (results.settings[index]['pushbullet:enabled'] === null || results.settings[index]['pushbullet:enabled'] === 'true') {
+				if (results.settings[index]['pushbullet:enabled'] === null || results.settings[index]['pushbullet:enabled'] === 'true' || results.settings[index]['pushbullet:enabled'] === true) {
 					pushToUid(uid, notifObj, results.tokens[uid], results.settings[index]);
 				}
 			});
